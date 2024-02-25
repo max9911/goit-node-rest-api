@@ -40,19 +40,19 @@ async function removeContact(contactId) {
   return removedObj;
 }
 
-async function addContact(contact) {
-  const { name, email, phone } = contact;
+async function addContact({ name, email, phone }) {
+  console.log("name", name);
   const data = await readContacts();
-  const newObj = { name, email, phone, id: crypto.randomUUID() };
-  const check = data.find((el) => {
-    el.name === newObj.name;
-  });
-  if (typeof check === "object") {
-    return { message: "The contact is already in Contacts List" };
+  const idx = data.findIndex((el) => el.name === name);
+
+  console.log("idx", idx);
+  if (idx === -1) {
+    const newObj = { name, email, phone, id: crypto.randomUUID() };
+    data.push(newObj);
+    await writeContacts(data);
+    return newObj;
   }
-  data.push(newObj);
-  await writeContacts(data);
-  return newObj;
+  return { message: "The contact is already in Contacts List" };
 }
 
 async function editContact(contact, id) {
