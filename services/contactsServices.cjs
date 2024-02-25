@@ -41,11 +41,9 @@ async function removeContact(contactId) {
 }
 
 async function addContact({ name, email, phone }) {
-  console.log("name", name);
   const data = await readContacts();
   const idx = data.findIndex((el) => el.name === name);
 
-  console.log("idx", idx);
   if (idx === -1) {
     const newObj = { name, email, phone, id: crypto.randomUUID() };
     data.push(newObj);
