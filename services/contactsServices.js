@@ -1,7 +1,6 @@
 import Contact from "../models/contact.js";
 
 async function listContacts() {
-  console.log("rgflhegregor");
   return await Contact.find();
 }
 
