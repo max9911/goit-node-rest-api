@@ -1,4 +1,4 @@
-import * as Joi from "../schemas/contactsSchemas.js";
+import * as Joi from "../schemas/JoiSchemas.js";
 
 import contactsService from "../services/contactsServices.js";
 

@@ -15,6 +15,10 @@ const mgContactSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+  },
 });
 
 export default mongoose.model("Contact", mgContactSchema);

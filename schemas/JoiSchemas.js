@@ -13,3 +13,7 @@ export const updateContactSchema = Joi.object({
   phone: Joi.string(),
   favorite: Joi.boolean(),
 });
+export const registerUsersSchema = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+});
